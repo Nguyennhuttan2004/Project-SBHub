@@ -169,6 +169,7 @@ const AdminDashboard = () => {
                                                 <div className="ml-3">
                                                     <div className="text-sm font-medium text-gray-900">{booking.user_id?.name || 'Unknown'}</div>
                                                     <div className="text-sm text-gray-500">{booking.user_id?.email || 'N/A'}</div>
+                                                    {booking.user_id?.phone && <div className="text-sm text-gray-500">{booking.user_id?.phone}</div>}
                                                 </div>
                                             </div>
                                         </td>
@@ -184,8 +185,8 @@ const AdminDashboard = () => {
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${booking.status === 'booked' ? 'bg-blue-100 text-blue-800' :
-                                                    booking.status === 'completed' ? 'bg-green-100 text-green-800' :
-                                                        'bg-red-100 text-red-800'
+                                                booking.status === 'completed' ? 'bg-green-100 text-green-800' :
+                                                    'bg-red-100 text-red-800'
                                                 }`}>
                                                 {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
                                             </span>

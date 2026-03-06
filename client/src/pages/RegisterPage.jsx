@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Mail, Lock, User, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, User, Phone, CheckCircle2 } from 'lucide-react';
 
 const RegisterPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
@@ -27,7 +28,7 @@ const RegisterPage = () => {
 
         setIsLoading(true);
 
-        const result = await register(name, email, password);
+        const result = await register(name, email, phone, password);
 
         if (result.success) {
             navigate('/');
@@ -110,6 +111,27 @@ const RegisterPage = () => {
                                             placeholder="you@example.com"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="phone">
+                                        Phone Number
+                                    </label>
+                                    <div className="relative rounded-md shadow-sm">
+                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                                            <Phone size={18} />
+                                        </div>
+                                        <input
+                                            id="phone"
+                                            name="phone"
+                                            type="tel"
+                                            required
+                                            className="block w-full pl-10 px-3 py-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-white transition-colors sm:text-sm"
+                                            placeholder="0912345678"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
                                         />
                                     </div>
                                 </div>

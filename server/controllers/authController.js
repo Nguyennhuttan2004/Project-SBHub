@@ -20,7 +20,7 @@ const generateToken = (id) => {
  */
 const register = async (req, res, next) => {
     try {
-        const { name, email, password, role } = req.body;
+        const { name, email, password, phone, role } = req.body;
 
         // Check if user already exists
         const existingUser = await User.findOne({ email });
@@ -29,7 +29,7 @@ const register = async (req, res, next) => {
         }
 
         // Create the new user (password is hashed via pre-save hook)
-        const user = await User.create({ name, email, password, role });
+        const user = await User.create({ name, email, password, phone, role });
 
         // Generate token and send response
         const token = generateToken(user._id);
@@ -42,6 +42,7 @@ const register = async (req, res, next) => {
                     id: user._id,
                     name: user.name,
                     email: user.email,
+                    phone: user.phone,
                     role: user.role,
                 },
                 token,
@@ -89,6 +90,7 @@ const login = async (req, res, next) => {
                     id: user._id,
                     name: user.name,
                     email: user.email,
+                    phone: user.phone,
                     role: user.role,
                 },
                 token,

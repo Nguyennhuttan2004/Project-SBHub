@@ -50,8 +50,8 @@ const AdminLayout = () => {
                                     key={item.name}
                                     to={item.path}
                                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-colors ${isActive
-                                            ? 'bg-primary-50 text-primary-700'
-                                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                        ? 'bg-primary-50 text-primary-700'
+                                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                                         }`}
                                 >
                                     <span className={isActive ? 'text-primary-600' : 'text-gray-400'}>
@@ -72,6 +72,7 @@ const AdminLayout = () => {
                         <div className="overflow-hidden">
                             <p className="text-sm font-medium text-gray-900 truncate">{user?.name}</p>
                             <p className="text-xs text-gray-500 truncate">{user?.email}</p>
+                            {user?.phone && <p className="text-xs text-gray-500 truncate mt-0.5">{user?.phone}</p>}
                         </div>
                     </div>
                     <button
